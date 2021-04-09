@@ -9,9 +9,8 @@ import java.util.EnumMap;
 
 public class PuzzleState extends State {
     private int[][] puzzle;
+    private int[][] pos;
     private int size;
-    private int xpos;
-    private int ypos;
 
     public void setSize(int size) {
         this.size = size;
@@ -25,25 +24,21 @@ public class PuzzleState extends State {
         return size;
     }
 
-    public int getXpos() {
-        return xpos;
-    }
-
-    public int getYpos() {
-        return ypos;
+    public int[][] getPos() {
+        return pos;
     }
 
     public void setPuzzle(int[][] puzzle) {
         this.puzzle = new int[this.getSize()][this.getSize()];
+        this.pos = new int[getSize()*getSize()][2];
         for(int i=0;i<this.getSize();i++) {
             //System.arraycopy(puzzle[i],0,this.puzzle[i],0,getSize());
             for(int j=0;j<this.getSize();j++)
             {
-                this.puzzle[i][j] = puzzle[i][j];
-                if(puzzle[i][j] == 0) {
-                    xpos = i;
-                    ypos = j;
-                }//标记0的位置
+                int no = puzzle[i][j];
+                this.puzzle[i][j] = no;
+                this.pos[no][0] = i;
+                this.pos[no][1] = j;    //标记位置
             }
         }
     }
@@ -76,7 +71,7 @@ public class PuzzleState extends State {
         st.setPuzzle(this.getPuzzle());
         int[][] state = st.getPuzzle();
         String dire = ((PuzzleAction)action).getDire();
-        int i = getXpos(),j = getYpos();
+        int i = this.getPos()[0][0],j = this.getPos()[0][1];
         if (dire.equals("up")) {
             state[i][j] = state[i - 1][j];
             state[i - 1][j] = 0;
@@ -161,23 +156,13 @@ public class PuzzleState extends State {
     }
 
     private int manhattan(PuzzleState goal){
-        int num=0,j;
-        int[][] st = getPuzzle(), go = goal.getPuzzle();
-        for (int ig = 0; ig < goal.getSize(); ig++)
-            for (int jg = 0; jg < goal.getSize(); jg++) {
-                for (int i = 0; i < getSize(); i++) {
-                    for (j = 0; j < getSize(); j++) {
-                        if (st[i][j] == go[ig][jg] && go[ig][jg] != 0) {
-                            num += Math.abs(i - ig) + Math.abs(j - jg);
-                            break;
-                        }
-                        else if(go[ig][jg] == 0)
-                            break;
-                    }
-                    if (j != getSize())
-                        break;
-                }
-            }
+        int num=0;
+        int[][] st = getPos(), go = goal.getPos();
+        for(int i=1;i<getSize()*getSize();i++)
+        {
+            int ix = st[i][0],iy = st[i][1],gx = go[i][0],gy = go[i][1];
+            num += Math.abs(ix - gx) + Math.abs(iy - gy);
+        }
         return num;
     }
 

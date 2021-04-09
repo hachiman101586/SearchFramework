@@ -26,8 +26,8 @@ public class Npuzzle extends Problem {
     @Override
     protected boolean applicable(State state, Action action) {
         int size = ((PuzzleState)state).getSize();
-        int i = ((PuzzleState)state).getXpos();
-        int j = ((PuzzleState)state).getYpos();
+        int i = ((PuzzleState)state).getPos()[0][0];
+        int j = ((PuzzleState)state).getPos()[0][1];
         String dire = ((PuzzleAction)action).getDire();
         if(dire.equals("up") && i != 0)
             return true;
