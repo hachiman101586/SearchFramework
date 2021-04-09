@@ -70,7 +70,7 @@ public final class Node{
 	//返回当前Node的f值 f = g + h
 	public int evaluation()
 	{
-		return pathCost + heuristic;
+		return pathCost + 2*heuristic;
 	}
 	
 	public State getState() {
