@@ -1,4 +1,4 @@
-package s17020031029.runner;
+package stud.runner;
 
 import algs4.util.In;
 import core.problem.Problem;
@@ -6,7 +6,7 @@ import core.runner.EngineFeeder;
 import core.runner.HeuristicType;
 import core.solver.Node;
 import core.solver.heuristic.BestFirstSearch;
-import s17020031029.problem.npuzzle.FeederStu;
+import stud.problem.npuzzle.FeederStu;
 
 import java.util.ArrayList;
 import java.util.Deque;
@@ -15,7 +15,7 @@ public class PuzzleRunner {
     public static void main(String[] args) {
         long start,now;
         //从文件中读入问题的实例
-        In problemInput = new In("resources/8-puzzle.txt");
+        In problemInput = new In("C:\\Users\\wyy\\Desktop\\计网\\TCP_选择响应\\SearchFramework\\SearchFramework1.0.1\\resources\\8-puzzle.txt");
 
         EngineFeeder feeder = new FeederStu();
 

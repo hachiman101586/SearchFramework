@@ -3,12 +3,11 @@ package xu.solver.heuristic;
 import core.problem.State;
 import core.solver.Node;
 import core.solver.heuristic.AbstractFrontier;
-import s17020031029.problem.npuzzle.PuzzleState;
 
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.Collection;
+
 /**
  * 封装了LinkedList数据结构的Frontier
  */

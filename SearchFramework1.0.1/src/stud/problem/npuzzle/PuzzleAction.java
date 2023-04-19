@@ -1,4 +1,4 @@
-package s17020031029.problem.npuzzle;
+package stud.problem.npuzzle;
 
 import core.problem.Action;
 

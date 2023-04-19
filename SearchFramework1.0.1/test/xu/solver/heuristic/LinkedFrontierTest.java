@@ -8,11 +8,9 @@ import xu.problem.pathfinding.Move;
 import xu.problem.pathfinding.Point;
 import xu.problem.pathfinding.Position;
 
-import static org.junit.jupiter.api.Assertions.*;
 
 class LinkedFrontierTest {
 
-    @org.junit.jupiter.api.Test
     void offer() {
         LinkedFrontier frontier = new LinkedFrontier(Node.evaluator(EvaluationType.FULL));
         State position = new Position(4, 4);

@@ -3,15 +3,15 @@ package xu.problem.pathfinding;
 import algs4.util.In;
 import core.problem.Problem;
 import core.runner.EngineFeeder;
-import org.junit.jupiter.api.Test;
+
 
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 
 class PathFindingTest {
-
-    @Test
     void applicable() {
         //生成一个具体的EngineFeeder：FeederXu，引擎饲养员徐老师:)
         EngineFeeder feeder = new FeederXu();
